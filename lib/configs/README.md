@@ -1,6 +1,6 @@
 # Configs
 
-## [recommended](https://github.com/tyankatsu0105/eslint-plugin/tree/master/lib/configs/recommended.ts)
+## [recommended](https://github.com/hrbrain/eslint-plugin/tree/master/lib/configs/recommended.ts)
 
 ```js
 module.exports = {
