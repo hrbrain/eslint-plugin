@@ -12,7 +12,7 @@
     "gen:rule": "hygen generate rule",
     "gen:sandbox": "hygen generate sandbox",
     "lint-staged": "lint-staged",
-    "sandbox": "eslint ./sandbox/**/*  --rulesdir dist/rules",
+    "sandbox": "eslint --fix ./sandbox/**/*  --rulesdir dist/rules",
     "test": "mocha --require ts-node/register tests/lib/**/*.spec.ts",
     "typecheck": "tsc --project ./tsconfig.build.json --noEmit",
     "update": "ts-node tools/update.ts"

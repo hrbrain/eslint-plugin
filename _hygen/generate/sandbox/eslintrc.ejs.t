@@ -9,6 +9,6 @@ module.exports = {
     project: "sandbox/tsconfig.json",
   },
   rules: {
-    "prefer-function-component-type": ["error", { prefer: "React.FC" }],
+    "use-name-space-import": 'warn',
   },
 };
