@@ -1,15 +1,50 @@
-import { createRule } from "../util";
+// ------------------------------------------------------------------------------
+// Imports
+// ------------------------------------------------------------------------------
 
-type Options = {
-  modules: string[];
+import { createRule } from "../util";
+import {
+  TSESTree,
+  AST_NODE_TYPES,
+} from "@typescript-eslint/experimental-utils";
+
+// ------------------------------------------------------------------------------
+// Helpers
+// ------------------------------------------------------------------------------
+
+/**
+ * whether module doesn't need to be `nameSpaceImport`
+ */
+const isAllowNotNameSpaceImportModule = (
+  node: TSESTree.ImportDeclaration,
+  allowNotNameSpaceImportModules: Options["allowNotNameSpaceImportModules"]
+) => {
+  if (typeof node.source.value !== "string") return false;
+
+  if (
+    !allowNotNameSpaceImportModules ||
+    allowNotNameSpaceImportModules.length === 0
+  )
+    return false;
+
+  return allowNotNameSpaceImportModules.includes(node.source.value);
 };
 
-const defaultOptions: [Options] = [{ modules: [""] }];
+// ------------------------------------------------------------------------------
+// Settings of createRule
+// ------------------------------------------------------------------------------
 
-const isExpectModules = (value: string, modules: Options["modules"]) =>
-  modules.includes(value);
+type Options = {
+  allowNotNameSpaceImportModules?: string[];
+};
+
+const defaultOptions: [Options] = [{}];
 
 type MessageIds = "useNameSpaceImport";
+
+// ------------------------------------------------------------------------------
+// Rule Definition
+// ------------------------------------------------------------------------------
 
 export = createRule<[Options], MessageIds>({
   name: "use-name-space-import",
@@ -23,55 +58,55 @@ export = createRule<[Options], MessageIds>({
     type: "suggestion",
     messages: {
       useNameSpaceImport:
-        "Should use <{{ nameSpaceImport }}> instead of <{{ namedImport }}>",
+        "Should use name space import if import module from {{ moduleName }}.",
     },
     schema: [
       {
         type: "object",
         properties: {
-          modules: {
+          allowNotNameSpaceImportModules: {
             type: "array",
             items: {
               type: "string",
             },
           },
         },
-        required: ["modules"],
       },
     ],
   },
   defaultOptions,
-  create(context) {
+  create(context, optionsWithDefault) {
+    const allowNotNameSpaceImportModules =
+      context.options[0]?.allowNotNameSpaceImportModules ??
+      optionsWithDefault[0]?.allowNotNameSpaceImportModules;
+
     return {
-      ImportDeclaration(node) {
-        if (
-          typeof node.source.value === "string" &&
-          !isExpectModules(node.source.value, context.options[0].modules)
-        ) {
+      'ImportDeclaration[parent.type="Program"]'(
+        node: TSESTree.ImportDeclaration
+      ) {
+        // Exclude name space import
+        if (node.specifiers[0].type === AST_NODE_TYPES.ImportNamespaceSpecifier)
           return;
-        }
 
-        for (const specifier of node.specifiers) {
-          if (specifier.type !== "ImportDefaultSpecifier") {
-            return;
-          }
+        if (
+          isAllowNotNameSpaceImportModule(node, allowNotNameSpaceImportModules)
+        )
+          return;
 
-          context.report({
-            node,
-            loc: specifier.loc,
-            messageId: "useNameSpaceImport",
-            data: {
-              nameSpaceImport: `import * as ${specifier.local.name}`,
-              namedImport: `import ${specifier.local.name}`,
-            },
-            fix(fixer) {
-              return fixer.replaceTextRange(
-                specifier.range,
-                `* as ${specifier.local.name}`
-              );
-            },
-          });
-        }
+        context.report({
+          node,
+          loc: node.loc,
+          messageId: "useNameSpaceImport",
+          data: {
+            moduleName: node.source.value,
+          },
+          fix(fixer) {
+            return fixer.replaceTextRange(
+              node.range,
+              `import * as NameSpace from "${node.source.value}";`
+            );
+          },
+        });
       },
     };
   },
