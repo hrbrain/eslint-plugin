@@ -103,7 +103,7 @@ export = createRule<[Options], MessageIds>({
           fix(fixer) {
             return fixer.replaceTextRange(
               node.range,
-              `import * as NameSpace from "${node.source.value}"`
+              `import * as NameSpace from "${node.source.value}";`
             );
           },
         });
