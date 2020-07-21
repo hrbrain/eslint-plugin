@@ -3,5 +3,6 @@ export = {
   rules: {
     "@hrbrain/use-name-space-import": "warn",
     "@hrbrain/no-use-function-component-type-without-children": "warn",
+    "@hrbrain/no-multiple-named-imports": "warn",
   },
 };
