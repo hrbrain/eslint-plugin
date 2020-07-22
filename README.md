@@ -1,6 +1,6 @@
 # ESLint plugin for HRBrain
 
-![LICENSE MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)
+![LICENSE Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-green.svg?style=flat-square)
 
 ## Usage
 
@@ -40,6 +40,6 @@ Then, you can run ESLint.
 yarn sandbox
 ```
 
-## LICENSE (MIT)
+## LICENSE (Apache-2.0)
 
 See [LICENSE](https://github.com/hrbrain/eslint-plugin/blob/master/LICENSE)

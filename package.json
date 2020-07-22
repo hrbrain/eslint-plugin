@@ -2,7 +2,7 @@
   "name": "@hrbrain/eslint-plugin",
   "version": "0.0.0",
   "repository": "https://github.com/hrbrain/eslint-plugin.git",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "hrb-yamamoto-katsuya <yamamoto.katsuya@hrbrain.co.jp>",
   "main": "dist/index.js",
   "scripts": {
