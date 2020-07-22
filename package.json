@@ -1,6 +1,6 @@
 {
   "name": "@hrbrain/eslint-plugin",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": "https://github.com/hrbrain/eslint-plugin.git",
   "license": "Apache-2.0",
   "author": "hrb-yamamoto-katsuya <yamamoto.katsuya@hrbrain.co.jp>",
