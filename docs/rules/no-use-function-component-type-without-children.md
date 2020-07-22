@@ -47,34 +47,33 @@ export const Component5: React.FunctionComponent<Props> = (props) => {
 ```ts
 /*eslint @hrbrain/no-use-function-component-type-without-children: "error"*/
 
-
-import * as React from 'react';
+import * as React from "react";
 
 type Props = {
   name: string;
 };
 
-export const Component1: = (props: Props): React.ReactElement => <div>{props.name}</div>;
+export const Component1 = (props: Props): React.ReactElement => (
+  <div>{props.name}</div>
+);
 
-export const Component2: React.FunctionComponent<Props> = (props) => {
-  const { children } = props
-  return (
-    <div>{children}</div>
-  )
+export const Component2: React.FC<Props> = (props) => (
+  <div>{props.children}</div>
+);
+
+export const Component3: React.FunctionComponent<Props> = (props) => {
+  const { children } = props;
+  return <div>{children}</div>;
 };
 
-export const Component3: React.FC<Props> = (props: Props) => {
-  const componentChildren = props['children']
-  return (
-    <div>{componentChildren}</div>
-  )
+export const Component4: React.FC<Props> = (props: Props) => {
+  const componentChildren = props["children"];
+  return <div>{componentChildren}</div>;
 };
 
-export const Component3: React.FC<Props> = (props: Props) => {
-  const componentChildren = props.children
-  return (
-    <div>{componentChildren}</div>
-  )
+export const Component5: React.FC<Props> = (props: Props) => {
+  const componentChildren = props.children;
+  return <div>{componentChildren}</div>;
 };
 ```
 
