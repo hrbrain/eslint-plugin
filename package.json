@@ -12,6 +12,7 @@
     "gen:rule": "hygen generate rule",
     "gen:sandbox": "hygen generate sandbox",
     "lint-staged": "lint-staged",
+    "release": "shipjs prepare",
     "sandbox": "eslint --fix ./sandbox/**/*  --rulesdir dist/rules",
     "test": "mocha --require ts-node/register tests/lib/**/*.spec.ts",
     "typecheck": "tsc --project ./tsconfig.build.json --noEmit",
@@ -39,6 +40,7 @@
     "mocha": "^8.0.1",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
+    "shipjs": "0.20.1",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.6"
   },
