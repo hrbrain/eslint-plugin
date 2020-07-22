@@ -1,3 +1,12 @@
+## [0.1.1](https://github.com/hrbrain/eslint-plugin/compare/v0.1.0...v0.1.1) (2020-07-22)
+
+
+### Bug Fixes
+
+* fix publish target file ([#12](https://github.com/hrbrain/eslint-plugin/issues/12)) ([9a4c5ba](https://github.com/hrbrain/eslint-plugin/commit/9a4c5ba76edab753f9c5d1549bf080706b9364ed))
+
+
+
 # 0.1.0 (2020-07-22)
 
 
