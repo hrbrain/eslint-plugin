@@ -12,6 +12,31 @@ npm install -D @hrbrain/eslint-plugin eslint
 yarn add -D @hrbrain/eslint-plugin eslint
 ```
 
+```js
+// use plugin:
+
+module.exports = {
+  parser: "@typescript-eslint/parser",
+  parserOptions: { sourceType: "module" },
+  plugins: ["@hrbrain"],
+  ecmaFeatures: {
+    jsx: true,
+  },
+  rules: {
+    "@hrbrain/no-multiple-named-imports": "warn",
+    // ...
+  },
+};
+```
+
+```js
+// use config:
+
+module.exports = {
+  extends: ["plugin:@hrbrain/recommended"],
+};
+```
+
 ## [Rules](https://github.com/hrbrain/eslint-plugin/blob/master/docs/rules/README.md)
 
 ## [Configs](https://github.com/hrbrain/eslint-plugin/tree/master/lib/configs)
