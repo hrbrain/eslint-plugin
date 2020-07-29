@@ -1,3 +1,12 @@
+## [0.1.2](https://github.com/hrbrain/eslint-plugin/compare/v0.1.1...v0.1.2) (2020-07-29)
+
+
+### Bug Fixes
+
+* consider pattern that not exist specifiers ([#15](https://github.com/hrbrain/eslint-plugin/issues/15)) ([0b89010](https://github.com/hrbrain/eslint-plugin/commit/0b890105502802efdf2cf70f3cc4de35f591807f))
+
+
+
 ## [0.1.1](https://github.com/hrbrain/eslint-plugin/compare/v0.1.0...v0.1.1) (2020-07-22)
 
 
