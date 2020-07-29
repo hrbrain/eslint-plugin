@@ -85,7 +85,10 @@ export = createRule<[Options], MessageIds>({
         node: TSESTree.ImportDeclaration
       ) {
         // Exclude name space import
-        if (node.specifiers[0].type === AST_NODE_TYPES.ImportNamespaceSpecifier)
+        if (
+          node.specifiers.length === 0 ||
+          node.specifiers[0].type === AST_NODE_TYPES.ImportNamespaceSpecifier
+        )
           return;
 
         if (

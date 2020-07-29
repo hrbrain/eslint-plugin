@@ -18,6 +18,9 @@ tester.run("use-name-space-import", rule, {
       code: "import * as React from 'react';",
     },
     {
+      code: "import 'minireset.css';",
+    },
+    {
       code: "import React from 'react';",
       options: [{ allowNotNameSpaceImportModules: ["react"] }],
     },
