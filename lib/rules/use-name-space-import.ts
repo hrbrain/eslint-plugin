@@ -54,7 +54,6 @@ export = createRule<[Options], MessageIds>({
       category: "Best Practices",
       recommended: false,
     },
-    fixable: "code",
     type: "suggestion",
     messages: {
       useNameSpaceImport:
@@ -102,12 +101,6 @@ export = createRule<[Options], MessageIds>({
           messageId: "useNameSpaceImport",
           data: {
             moduleName: node.source.value,
-          },
-          fix(fixer) {
-            return fixer.replaceTextRange(
-              node.range,
-              `import * as NameSpace from "${node.source.value}";`
-            );
           },
         });
       },
