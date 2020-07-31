@@ -12,6 +12,7 @@ Don't imports as named import from a module
 /*eslint @hrbrain/no-multiple-named-imports: "error"*/
 
 import { FC, FunctionComponent } from "react";
+import defaultExportMember, { member1, member2 } from "module";
 ```
 
 ### 👍
@@ -20,6 +21,7 @@ import { FC, FunctionComponent } from "react";
 /*eslint @hrbrain/no-multiple-named-imports: "error"*/
 
 import { FC } from "react";
+import defaultExportMember, { member1 } from "module";
 ```
 
 ## 🔧 Options
