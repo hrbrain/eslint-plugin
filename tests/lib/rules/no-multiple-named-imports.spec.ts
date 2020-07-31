@@ -19,11 +19,22 @@ tester.run("no-multiple-named-imports", rule, {
       import { FC } from 'react';
     `,
     },
+    {
+      code: `
+      import defaultExportMember, {member1} from 'module';
+    `,
+    },
   ],
   invalid: [
     {
       code: `
       import { FC, FunctionComponent } from 'react';
+      `,
+      errors: [{ messageId: "noMultipleNamedImports" }],
+    },
+    {
+      code: `
+      import defaultExportMember, {member1, module2} from 'module';
       `,
       errors: [{ messageId: "noMultipleNamedImports" }],
     },

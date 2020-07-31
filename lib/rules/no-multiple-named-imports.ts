@@ -3,7 +3,19 @@
 // ------------------------------------------------------------------------------
 
 import { createRule } from "../util";
-import { TSESTree } from "@typescript-eslint/experimental-utils";
+import {
+  TSESTree,
+  AST_NODE_TYPES,
+} from "@typescript-eslint/experimental-utils";
+
+// ------------------------------------------------------------------------------
+// Helpers
+// ------------------------------------------------------------------------------
+
+const countImportSpecifier = (node: TSESTree.ImportDeclaration) =>
+  node.specifiers.filter(
+    (specifier) => specifier.type === AST_NODE_TYPES.ImportSpecifier
+  ).length;
 
 // ------------------------------------------------------------------------------
 // Settings of createRule
@@ -38,14 +50,16 @@ export = createRule<[], MessageIds>({
       "ImportDeclaration[specifiers.length>1]"(
         node: TSESTree.ImportDeclaration
       ) {
-        context.report({
-          node,
-          loc: node.loc,
-          messageId: "noMultipleNamedImports",
-          data: {
-            moduleName: node.source.value,
-          },
-        });
+        if (countImportSpecifier(node) >= 2) {
+          context.report({
+            node,
+            loc: node.loc,
+            messageId: "noMultipleNamedImports",
+            data: {
+              moduleName: node.source.value,
+            },
+          });
+        }
       },
     };
   },

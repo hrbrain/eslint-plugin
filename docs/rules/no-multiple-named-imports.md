@@ -20,6 +20,7 @@ import { FC, FunctionComponent } from "react";
 /*eslint @hrbrain/no-multiple-named-imports: "error"*/
 
 import { FC } from "react";
+import defaultExportMember, { member1 } from "module";
 ```
 
 ## 🔧 Options
