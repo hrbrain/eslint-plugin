@@ -30,17 +30,11 @@ tester.run("use-name-space-import", rule, {
       code: `
       import React from 'react';
       `,
-      output: `
-      import * as NameSpace from "react";
-      `,
       errors: [{ messageId: "useNameSpaceImport" }],
     },
     {
       code: `
       import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit';
-      `,
-      output: `
-      import * as NameSpace from "@reduxjs/toolkit";
       `,
       errors: [{ messageId: "useNameSpaceImport" }],
     },
