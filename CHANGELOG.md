@@ -1,3 +1,14 @@
+# [0.2.0](https://github.com/hrbrain/eslint-plugin/compare/v0.1.2...v0.2.0) (2020-07-31)
+
+
+### Features
+
+* **no-multiple-named-imports:** only check member that has type ImportSpecifier ([#22](https://github.com/hrbrain/eslint-plugin/issues/22)) ([2a6e6e9](https://github.com/hrbrain/eslint-plugin/commit/2a6e6e9be834d7ad8cf27008e604d3f56c5a1fd8)), closes [#19](https://github.com/hrbrain/eslint-plugin/issues/19)
+* **use-name-space-import:** add option allowDefaultImport ([#23](https://github.com/hrbrain/eslint-plugin/issues/23)) ([a75c08e](https://github.com/hrbrain/eslint-plugin/commit/a75c08e85e4b9733e948133e3e1c1daf39327581)), closes [#21](https://github.com/hrbrain/eslint-plugin/issues/21)
+* **use-name-space-import:** remove fixable option ([#19](https://github.com/hrbrain/eslint-plugin/issues/19)) ([b18890c](https://github.com/hrbrain/eslint-plugin/commit/b18890c625fcbd602a601c593c2d5036830882c1)), closes [#18](https://github.com/hrbrain/eslint-plugin/issues/18)
+
+
+
 ## [0.1.2](https://github.com/hrbrain/eslint-plugin/compare/v0.1.1...v0.1.2) (2020-07-29)
 
 
