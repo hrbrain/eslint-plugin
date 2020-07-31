@@ -30,15 +30,28 @@ const isAllowNotNameSpaceImportModule = (
   return allowNotNameSpaceImportModules.includes(node.source.value);
 };
 
+const hasImportDefaultSpecifier = (node: TSESTree.ImportDeclaration) => {
+  if (typeof node.source.value !== "string") return false;
+
+  return node.specifiers.some(
+    (specifier) => specifier.type === AST_NODE_TYPES.ImportDefaultSpecifier
+  );
+};
+
 // ------------------------------------------------------------------------------
 // Settings of createRule
 // ------------------------------------------------------------------------------
 
 type Options = {
   allowNotNameSpaceImportModules?: string[];
+  allowDefaultImport?: boolean;
 };
 
-const defaultOptions: [Options] = [{}];
+const defaultOptions: [Options] = [
+  {
+    allowDefaultImport: false,
+  },
+];
 
 type MessageIds = "useNameSpaceImport";
 
@@ -69,6 +82,9 @@ export = createRule<[Options], MessageIds>({
               type: "string",
             },
           },
+          allowDefaultImport: {
+            type: "boolean",
+          },
         },
       },
     ],
@@ -78,6 +94,9 @@ export = createRule<[Options], MessageIds>({
     const allowNotNameSpaceImportModules =
       context.options[0]?.allowNotNameSpaceImportModules ??
       optionsWithDefault[0]?.allowNotNameSpaceImportModules;
+    const allowDefaultImport =
+      context.options[0]?.allowDefaultImport ??
+      optionsWithDefault[0]?.allowDefaultImport;
 
     return {
       'ImportDeclaration[parent.type="Program"]'(
@@ -92,6 +111,13 @@ export = createRule<[Options], MessageIds>({
 
         if (
           isAllowNotNameSpaceImportModule(node, allowNotNameSpaceImportModules)
+        )
+          return;
+
+        if (
+          node.specifiers.length === 1 &&
+          allowDefaultImport &&
+          hasImportDefaultSpecifier(node)
         )
           return;
 

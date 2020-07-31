@@ -24,6 +24,10 @@ tester.run("use-name-space-import", rule, {
       code: "import React from 'react';",
       options: [{ allowNotNameSpaceImportModules: ["react"] }],
     },
+    {
+      code: "import React from 'react';",
+      options: [{ allowDefaultImport: true }],
+    },
   ],
   invalid: [
     {
@@ -36,6 +40,11 @@ tester.run("use-name-space-import", rule, {
       code: `
       import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit';
       `,
+      errors: [{ messageId: "useNameSpaceImport" }],
+    },
+    {
+      code: "import React, { useState } from 'react';",
+      options: [{ allowDefaultImport: true }],
       errors: [{ messageId: "useNameSpaceImport" }],
     },
   ],

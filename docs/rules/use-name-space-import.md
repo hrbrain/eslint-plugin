@@ -51,3 +51,31 @@ import { createSlice, configureStore, PayloadAction } from "@reduxjs/toolkit";
 
 - `allowNotNameSpaceImportModules` (`string[]`) ... Specify the module name you don't have to change into name space import.
   - Default ... `[""]`
+
+### `allowDefaultImport`
+
+```json
+{
+  "rules": {
+    "@hrbrain/use-name-space-import": ["warn", { "allowDefaultImport": true }]
+  }
+}
+```
+
+### 👍
+
+```ts
+/*eslint @hrbrain/use-name-space-import: ["warn", { "allowDefaultImport": true }]*/
+import React from "react";
+import flow from "lodash/fp/flow";
+```
+
+### 👎
+
+```ts
+/*eslint @hrbrain/use-name-space-import: ["warn", { "allowDefaultImport": true }]*/
+import React, { useState } from "react";
+```
+
+- `allowDefaultImport` (`boolean`) ... Allow import member that exported default. Like `export default fn`
+  - Default ... `false`
