@@ -2,11 +2,18 @@
 // Imports
 // ------------------------------------------------------------------------------
 
-import { createRule } from "../util";
+import { createRule, TSKeywordMap } from "../util";
 import {
   TSESTree,
   AST_NODE_TYPES,
 } from "@typescript-eslint/experimental-utils";
+
+// ------------------------------------------------------------------------------
+// Helpers
+// ------------------------------------------------------------------------------
+
+const isKeywordType = (type: string) =>
+  Object.keys(TSKeywordMap).includes(type);
 
 // ------------------------------------------------------------------------------
 // Settings of createRule
@@ -14,11 +21,13 @@ import {
 
 type Options = {
   onlyReference: boolean;
+  allowKeywords?: boolean;
 };
 
 const defaultOptions: [Options] = [
   {
     onlyReference: false,
+    allowKeywords: false,
   },
 ];
 
@@ -48,6 +57,9 @@ export = createRule<[Options], MessageIds>({
           onlyReference: {
             type: "boolean",
           },
+          allowKeywords: {
+            type: "boolean",
+          },
         },
         required: ["onlyReference"],
       },
@@ -58,12 +70,17 @@ export = createRule<[Options], MessageIds>({
     const onlyReference =
       context.options[0]?.onlyReference ?? optionsWithDefault[0]?.onlyReference;
 
+    const allowKeywords =
+      context.options[0]?.allowKeywords ?? optionsWithDefault[0]?.allowKeywords;
+
     return {
       "TSTypeParameterInstantiation[params.length>0]"(
         node: TSESTree.TSTypeParameterInstantiation
       ) {
         for (const param of node.params) {
           if (param.type === AST_NODE_TYPES.TSTypeReference) continue;
+
+          if (allowKeywords && isKeywordType(param.type)) continue;
 
           if (onlyReference) {
             context.report({

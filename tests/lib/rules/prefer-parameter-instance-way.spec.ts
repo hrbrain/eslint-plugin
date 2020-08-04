@@ -44,6 +44,22 @@ tester.run("prefer-parameter-instance-way", rule, {
         },
       ],
     },
+    {
+      code: `
+      const user: User<string> = {
+        name: 'name',
+        info: {
+          age: 20
+        }
+      }
+    `,
+      options: [
+        {
+          onlyReference: true,
+          allowKeywords: true,
+        },
+      ],
+    },
   ],
   invalid: [
     {
@@ -58,6 +74,23 @@ tester.run("prefer-parameter-instance-way", rule, {
       options: [
         {
           onlyReference: true,
+        },
+      ],
+      errors: [{ messageId: "onlyReference" }],
+    },
+    {
+      code: `
+      const user: User<{age: number}> = {
+        name: 'name',
+        info: {
+          age: 20
+        }
+      }
+    `,
+      options: [
+        {
+          onlyReference: true,
+          allowKeywords: true,
         },
       ],
       errors: [{ messageId: "onlyReference" }],

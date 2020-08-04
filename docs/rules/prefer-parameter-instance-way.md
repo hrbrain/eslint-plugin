@@ -89,3 +89,6 @@ const user: User<UserProps> = {
 
 - `onlyReference` (`boolean`) ... Generics param's type allow type only `TSTypeReference`.
   - Default ... `false`
+- `allowKeywords` (`boolean`) ... Generics param's type allow type `keywords`.
+  - See: [TSKeywordMap](https://github.com/hrbrain/eslint-plugin/blob/master/lib/util/keywords.ts)
+  - Default ... `false`
