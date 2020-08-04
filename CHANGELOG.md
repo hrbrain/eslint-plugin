@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/hrbrain/eslint-plugin/compare/v0.2.0...v0.3.0) (2020-08-04)
+
+
+### Features
+
+* **use-name-space-import:** support minimatch at allowNotNameSpaceImportModules option ([#28](https://github.com/hrbrain/eslint-plugin/issues/28)) ([9601cfe](https://github.com/hrbrain/eslint-plugin/commit/9601cfe8f20248a5aa71da372f4e09735d6bfe39)), closes [#17](https://github.com/hrbrain/eslint-plugin/issues/17)
+
+
+
 # [0.2.0](https://github.com/hrbrain/eslint-plugin/compare/v0.1.2...v0.2.0) (2020-07-31)
 
 
