@@ -28,8 +28,10 @@ tester.run("use-name-space-import", rule, {
       code: `
       import Module1 from 'module/1';
       import Module2 from 'module/2';
+
+      import React from 'react';
       `,
-      options: [{ allowNotNameSpaceImportModules: ["module/**/*"] }],
+      options: [{ allowNotNameSpaceImportModules: ["module/**/*", "react"] }],
     },
     {
       code: "import React from 'react';",
