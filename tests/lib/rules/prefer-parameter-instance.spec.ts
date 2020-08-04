@@ -1,6 +1,6 @@
 import { RuleTester } from "../../util";
 
-import rule from "../../../lib/rules/prefer-parameter-instance-way";
+import rule from "../../../lib/rules/prefer-parameter-instance";
 
 const tester = new RuleTester({
   parser: "@typescript-eslint/parser",
@@ -12,7 +12,7 @@ const tester = new RuleTester({
   },
 });
 
-tester.run("prefer-parameter-instance-way", rule, {
+tester.run("prefer-parameter-instance", rule, {
   valid: [
     {
       code: `

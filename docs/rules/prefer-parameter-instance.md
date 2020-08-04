@@ -1,15 +1,15 @@
-# @hrbrain/prefer-parameter-instance-way
+# @hrbrain/prefer-parameter-instance
 
 ## 📖 Rule Details
 
-Check generics paramater instance way whether expected
+Check generics paramater instance whether expected
 
 ###
 
 ### 👎
 
 ```ts
-/*eslint @hrbrain/prefer-parameter-instance-way: ["error", {onlyReference: true}]*/
+/*eslint @hrbrain/prefer-parameter-instance: ["error", {onlyReference: true}]*/
 
 type User<T> = {
   name: string;
@@ -31,7 +31,7 @@ const user: User<{
 ### 👍
 
 ```ts
-/*eslint @hrbrain/prefer-parameter-instance-way: ["error", {onlyReference: true}]*/
+/*eslint @hrbrain/prefer-parameter-instance: ["error", {onlyReference: true}]*/
 
 type User<T> = {
   name: string;
@@ -59,10 +59,7 @@ const user: User<UserProps> = {
 ```json
 {
   "rules": {
-    "@hrbrain/prefer-parameter-instance-way": [
-      "error",
-      { "onlyReference": true }
-    ]
+    "@hrbrain/prefer-parameter-instance": ["error", { "onlyReference": true }]
   }
 }
 ```
@@ -95,7 +92,7 @@ const user: User<UserProps> = {
 ```json
 {
   "rules": {
-    "@hrbrain/prefer-parameter-instance-way": [
+    "@hrbrain/prefer-parameter-instance": [
       "error",
       {
         "onlyReference": true,

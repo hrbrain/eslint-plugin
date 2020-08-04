@@ -38,10 +38,10 @@ type MessageIds = "onlyReference";
 // ------------------------------------------------------------------------------
 
 export = createRule<[Options], MessageIds>({
-  name: "prefer-parameter-instance-way",
+  name: "prefer-parameter-instance",
   meta: {
     docs: {
-      description: "Check generics paramater instance way whether expected",
+      description: "Check generics paramater instance whether expected",
       category: "Best Practices",
       recommended: false,
     },
