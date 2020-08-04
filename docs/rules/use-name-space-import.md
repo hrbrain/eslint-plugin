@@ -50,6 +50,8 @@ import { createSlice, configureStore, PayloadAction } from "@reduxjs/toolkit";
 ```
 
 - `allowNotNameSpaceImportModules` (`string[]`) ... Specify the module name you don't have to change into name space import.
+  - Able to use [minimatch](https://github.com/isaacs/minimatch).
+    - example ... `{ "allowNotNameSpaceImportModules": ["lodash/fp/*", "react"] }`
   - Default ... `[""]`
 
 ### `allowDefaultImport`

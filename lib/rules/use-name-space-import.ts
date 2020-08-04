@@ -7,6 +7,7 @@ import {
   TSESTree,
   AST_NODE_TYPES,
 } from "@typescript-eslint/experimental-utils";
+import minimatch from "minimatch";
 
 // ------------------------------------------------------------------------------
 // Helpers
@@ -27,7 +28,11 @@ const isAllowNotNameSpaceImportModule = (
   )
     return false;
 
-  return allowNotNameSpaceImportModules.includes(node.source.value);
+  return allowNotNameSpaceImportModules.some((allowModuleName) => {
+    if (typeof node.source.value !== "string") return false;
+
+    return minimatch(node.source.value, allowModuleName);
+  });
 };
 
 const hasImportDefaultSpecifier = (node: TSESTree.ImportDeclaration) => {
