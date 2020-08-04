@@ -54,6 +54,8 @@ const user: User<UserProps> = {
 
 ## 🔧 Options
 
+### `onlyReference`
+
 ```json
 {
   "rules": {
@@ -66,8 +68,6 @@ const user: User<UserProps> = {
 ```
 
 ```ts
-/*eslint @hrbrain/prefer-parameter-instance-way: ["error", {onlyReference: true}]*/
-
 type User<T> = {
   name: string;
   info: T;
@@ -89,6 +89,37 @@ const user: User<UserProps> = {
 
 - `onlyReference` (`boolean`) ... Generics param's type allow type only `TSTypeReference`.
   - Default ... `false`
+
+### `allowKeywords`
+
+```json
+{
+  "rules": {
+    "@hrbrain/prefer-parameter-instance-way": [
+      "error",
+      {
+        "onlyReference": true,
+        "allowKeywords": true
+      }
+    ]
+  }
+}
+```
+
+```ts
+type User<T> = {
+  age: T;
+};
+
+const user1: User<string> = {
+  age: "20",
+};
+
+const user2: User<number> = {
+  age: 20,
+};
+```
+
 - `allowKeywords` (`boolean`) ... Generics param's type allow type `keywords`.
   - See: [TSKeywordMap](https://github.com/hrbrain/eslint-plugin/blob/master/lib/util/keywords.ts)
   - Default ... `false`
