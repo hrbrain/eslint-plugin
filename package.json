@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",
-    "@types/eslint": "^7.2.0",
+    "@types/eslint": "^7.2.4",
     "@types/minimatch": "^3.0.3",
     "@types/mocha": "^8.0.0",
     "@types/prettier": "^2.1.0",
