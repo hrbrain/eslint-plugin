@@ -22,7 +22,7 @@
     "update": "ts-node tools/update.ts"
   },
   "dependencies": {
-    "@typescript-eslint/experimental-utils": "^3.6.1",
+    "@typescript-eslint/experimental-utils": "^4.4.0",
     "@typescript-eslint/parser": "^3.10.1",
     "minimatch": "^3.0.4"
   },
