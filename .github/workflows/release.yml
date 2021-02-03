@@ -44,6 +44,6 @@ jobs:
           node-version: '12.x'
 
       - name: publish to GitHub Packages
-        run: npm publish
+        run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
