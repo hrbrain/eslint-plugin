@@ -66,6 +66,22 @@ Then, you can run ESLint.
 yarn sandbox
 ```
 
+### Release
+
+This package use [shipjs](https://github.com/algolia/shipjs).
+
+1. You should add file `.env` at project's root.
+   Then, add token of your GitHub's.
+
+```
+GITHUB_TOKEN=token_is_here
+```
+
+2. Run `yarn release` and answer the some question from prompt.
+3. Merge PR made by shipjs like this https://github.com/hrbrain/eslint-plugin/pull/24
+
+Good!! This package is released by GitHub Actions!! Congrats!!
+
 ## LICENSE (Apache-2.0)
 
 See [LICENSE](https://github.com/hrbrain/eslint-plugin/blob/master/LICENSE)
