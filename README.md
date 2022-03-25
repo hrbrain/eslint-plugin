@@ -1,17 +1,22 @@
-# ESLint plugin for HRBrain
+# ESLint plugin for [HRBrain](https://www.hrbrain.jp/)
 
-[![npm version](https://badge.fury.io/js/%40hrbrain%2Feslint-plugin.svg)](https://badge.fury.io/js/%40hrbrain%2Feslint-plugin)
+[![GitHub Packages](https://img.shields.io/badge/package-GitHub-red.svg?style=flat-square)](https://github.com/hrbrain/eslint-plugin/packages/)
 ![LICENSE Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-green.svg?style=flat-square)
+[![deploy](https://img.shields.io/badge/deploy-🛳%20Ship.js-blue?style=flat)](https://github.com/algolia/shipjs)
 
 ## Usage
 
+`<your-project>/.npmrc`
+
+```
+@hrbrain:registry=https://npm.pkg.github.com
+```
+
 ```bash
-npm install -D @hrbrain/eslint-plugin eslint
-
-# or
-
 yarn add -D @hrbrain/eslint-plugin eslint
 ```
+
+`<your-project>/.eslintrc.js`
 
 ```js
 // use plugin:
@@ -38,50 +43,15 @@ module.exports = {
 };
 ```
 
-## [Rules](https://github.com/hrbrain/eslint-plugin/blob/master/docs/rules/README.md)
+## [Rules](./docs/rules)
 
-## [Configs](https://github.com/hrbrain/eslint-plugin/tree/master/lib/configs)
+## [Configs](./lib/configs)
 
-## Development
+## Contributing
 
-This projects use `yarn`.😺
-
-### Create new rule
-
-```bash
-yarn gen:rule
-```
-
-### Create sandbox
-
-Sandbox means environment that running ESLint as actual.
-
-```bash
-yarn gen:sandbox
-```
-
-Then, you can run ESLint.
-
-```bash
-yarn sandbox
-```
-
-### Release
-
-This package use [shipjs](https://github.com/algolia/shipjs).
-
-1. You should add file `.env` at project's root.
-   Then, add token of your GitHub's.
-
-```
-GITHUB_TOKEN=token_is_here
-```
-
-2. Run `yarn release` and answer the some question from prompt.
-3. Merge PR made by shipjs like this https://github.com/hrbrain/eslint-plugin/pull/24
-
-Good!! This package is released by GitHub Actions!! Congrats!!
+Thanks!! We prepare [contributing guide](./CONTRIBUTING.md).
+Please check this file at first.
 
 ## LICENSE (Apache-2.0)
 
-See [LICENSE](https://github.com/hrbrain/eslint-plugin/blob/master/LICENSE)
+See [LICENSE file](./LICENSE).
