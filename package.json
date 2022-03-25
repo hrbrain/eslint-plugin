@@ -8,6 +8,10 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/hrbrain"
+  },
   "scripts": {
     "build": "tsc --project ./tsconfig.build.json",
     "precommit": "lint-staged",
@@ -15,7 +19,6 @@
     "gen:rule": "hygen generate rule",
     "gen:sandbox": "hygen generate sandbox",
     "lint-staged": "lint-staged",
-    "release": "shipjs prepare",
     "sandbox": "eslint --fix ./sandbox/**/*  --rulesdir dist/rules",
     "test": "mocha --require ts-node/register tests/lib/**/*.spec.ts",
     "typecheck": "tsc --project ./tsconfig.build.json --noEmit",
@@ -45,7 +48,7 @@
     "mocha": "^8.1.3",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
-    "shipjs": "0.21.0",
+    "shipjs": "0.24.3",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
